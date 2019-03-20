@@ -9,6 +9,10 @@
 void string_copy(char *x, char *y)
 {
 
+    if (*x == '\0')
+    { // set the pointers to over to each other
+        *x = *y;
+    }
 }
 
 /*
@@ -21,7 +25,15 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
+    while (*str != '\0')
+    {
+        if (*str == c)
+        {
+            return str;
+        }
+        str++;
+    }
+    return 0;
 }
 
 /*
@@ -34,7 +46,6 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
 }
 
 #ifndef TESTING
