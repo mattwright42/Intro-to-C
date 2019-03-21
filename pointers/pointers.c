@@ -46,11 +46,43 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
+    // initialize an empty pointer
+    char *haystack_ptr;
+    while (*haystack != '\0')
+    {
+        // set the pointer to haystack
+        haystack_ptr = haystack;
+        // does it match the needle?
+        if (*haystack_ptr == *needle)
+        {
+            while (*needle != '\0')
+            {
+                // If not a match, break the loop
+                if (*haystack_ptr != *needle)
+                {
+                    break;
+                }
+                // increment
+                haystack_ptr++;
+                needle++;
+                //reach the end of the needle, return haystack
+                if (*needle == '\0')
+                {
+                    return haystack;
+                }
+            }
+        }
+        //increment haystack
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
 int main(void)
 {
+    char *hello = 'hello';
+    char *world = 'world';
     char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
 
